@@ -1,0 +1,7 @@
+services:
+  frontend:
+    container_name: sp_dapenbun
+    build: .
+    ports:
+      - "3001:80"
+    restart: unless-stopped
