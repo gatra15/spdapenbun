@@ -4,14 +4,16 @@ import { Menu, Phone, Mail, MapPin, Shield, Users, Target, Settings, MessageSqua
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Toaster } from './ui/sonner';
+import HeroSlider from './ui/heroslider';
 
 interface PublicWebsiteProps {
     content: SiteContent;
     onAdminAccess: () => void;
     onSubmitReport: (report: Omit<Report, 'id' | 'date' | 'status'>) => void;
+    onViewChange: (view: 'home' | 'news') => void;
 }
 
-export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: PublicWebsiteProps) {
+export function PublicWebsite({ content, onAdminAccess, onSubmitReport, onViewChange }: PublicWebsiteProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [reportForm, setReportForm] = useState({
         name: '',
@@ -54,9 +56,17 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                                <span className="text-white text-xl">SP</span>
-                            </div>
+                            {content.logo.url ? (
+                                <img
+                                    src={content.logo.url}
+                                    alt={content.logo.alt}
+                                    className="w-12 h-12 object-contain rounded-lg"
+                                />
+                            ) : (
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                                    <span className="text-white text-xl">SP</span>
+                                </div>
+                            )}
                             <div>
                                 <h1 className="text-xl text-foreground">{content.hero.title}</h1>
                                 <p className="text-sm text-muted-foreground">{content.hero.subtitle}</p>
@@ -68,6 +78,12 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                             <a href="#home" className="text-foreground hover:text-primary transition-colors">Beranda</a>
                             <a href="#about" className="text-foreground hover:text-primary transition-colors">Tentang</a>
                             <a href="#services" className="text-foreground hover:text-primary transition-colors">Program</a>
+                            <button
+                                onClick={() => onViewChange('news')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                News
+                            </button>
                             <a href="#helpdesk" className="text-foreground hover:text-primary transition-colors">Laporan</a>
                             <a href="#contact" className="text-foreground hover:text-primary transition-colors">Kontak</a>
                             <button
@@ -108,38 +124,10 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
             </header>
 
             {/* Hero Section */}
-            <section id="home" className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 text-foreground">
-                            {content.hero.title}
-                        </h1>
-                        <h2 className="text-2xl md:text-3xl mb-6 text-muted-foreground">
-                            {content.hero.subtitle}
-                        </h2>
-                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            {content.hero.description}
-                        </p>
-                        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="#about"
-                                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
-                            >
-                                Tentang Kami
-                            </a>
-                            <a
-                                href="#contact"
-                                className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg hover:opacity-90 transition-opacity"
-                            >
-                                Hubungi Kami
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <HeroSlider content={content.hero} />
 
             {/* About Section */}
-            <section id="about" className="py-20 bg-white">
+            < section id="about" className="py-20 bg-white" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-5xl mx-auto">
                         <h2 className="text-3xl md:text-4xl text-center mb-12 text-foreground">
@@ -164,10 +152,10 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Services Section */}
-            <section id="services" className="py-20 bg-muted/30">
+            < section id="services" className="py-20 bg-muted/30" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-6xl mx-auto">
                         <h2 className="text-3xl md:text-4xl text-center mb-12 text-foreground">
@@ -196,10 +184,10 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Contact Section */}
-            <section id="contact" className="py-20 bg-white">
+            < section id="contact" className="py-20 bg-white" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-4xl text-center mb-12 text-foreground">
@@ -230,10 +218,10 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Report/Helpdesk Section */}
-            <section id="helpdesk" className="py-20 bg-white">
+            < section id="helpdesk" className="py-20 bg-white" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-12">
@@ -325,18 +313,26 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport }: Public
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Footer */}
-            <footer className="py-8 bg-foreground text-background">
+            <footer className="bg-muted/50 border-t border-border py-8">
                 <div className="container mx-auto px-4">
                     <div className="text-center">
-                        <p className="text-sm opacity-80">
-                            © {new Date().getFullYear()} {content.hero.title}. All rights reserved.
+                        <p className="text-sm text-muted-foreground">
+                            © 2024 SP Dapenbun. All rights reserved.
                         </p>
+                        {/* Admin Access Button */}
+                        <button
+                            onClick={onAdminAccess}
+                            className="mt-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                            title="Tekan Ctrl+Shift+A untuk akses cepat"
+                        >
+                            Admin Access
+                        </button>
                     </div>
                 </div>
             </footer>
-        </div>
+        </div >
     );
 }
