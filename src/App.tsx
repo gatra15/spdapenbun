@@ -195,6 +195,7 @@ export default function App() {
   const [content, setContent] = useState<SiteContent>(defaultContent);
   const [reports, setReports] = useState<Report[]>([]);
   const [currentView, setCurrentView] = useState<'home' | 'news'>('home');
+  const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
 
   // Load content from localStorage on mount
   useEffect(() => {
@@ -335,7 +336,10 @@ export default function App() {
             content={content}
             onAdminAccess={() => setShowLogin(true)}
             onSubmitReport={addReport}
+            currentView={currentView}
             onViewChange={setCurrentView}
+            selectedArticle={selectedArticle}
+            onSelectArticle={setSelectedArticle}
           />
 
           {showLogin && (
