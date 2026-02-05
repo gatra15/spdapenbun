@@ -17,7 +17,7 @@ export function ReportSection({ helpdesk, handleSubmitReport }: ReportSectionPro
     });
     return (
         <>
-            < section id="helpdesk" className="py-20 bg-white" >
+            < section id="helpdesk" className="py-30 bg-white" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-12">

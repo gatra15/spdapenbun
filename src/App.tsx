@@ -3,6 +3,20 @@ import { PublicWebsite } from './app/components/PublicWebsite';
 import { AdminPanel } from './app/components/AdminPanel';
 import { AdminLogin } from './app/components/AdminLogin';
 
+export interface BoardSection {
+  id: String;
+  title: String;
+  members: BoardMember[];
+  order: number;
+}
+export interface BoardMember {
+  id: string;
+  name: string;
+  position: string;
+  photo: string;
+  description?: string;
+}
+
 export interface Report {
   id: string;
   name: string;
@@ -26,6 +40,11 @@ export interface NewsArticle {
 }
 
 export interface SiteContent {
+  board: {
+    title: string;
+    description: string;
+    sections: BoardSection[]
+  };
   logo: {
     url: string;
     alt: string;
@@ -55,6 +74,7 @@ export interface SiteContent {
     description: string;
     mission: string;
     vision: string;
+    backgroundImage: string;
   };
   services: {
     title: string;
@@ -83,6 +103,68 @@ export interface SiteContent {
 }
 
 const defaultContent: SiteContent = {
+  board: {
+    title: 'Struktur Pengurus',
+    description: 'Struktur kepengurusan SP Dapenbun periode 2024-2029',
+    sections: [
+      {
+        id: '1',
+        title: 'Majelis Pertimbangan Organisasi (MPO)',
+        order: 1,
+        members: [
+          {
+            id: '1',
+            name: 'Dr. Ahmad Suryanto, S.H., M.H.',
+            position: 'Ketua MPO',
+            photo: 'https://ui-avatars.com/api/?name=Ahmad+Suryanto&size=400&background=0D8ABC&color=fff',
+            description: 'Berpengalaman 20 tahun di bidang ketenagakerjaan'
+          },
+          {
+            id: '2',
+            name: 'Ir. Budi Santoso, M.M.',
+            position: 'Wakil Ketua MPO',
+            photo: 'https://ui-avatars.com/api/?name=Budi+Santoso&size=400&background=0D8ABC&color=fff',
+            description: 'Ahli manajemen organisasi'
+          },
+          {
+            id: '3',
+            name: 'Siti Nurhaliza, S.E.',
+            position: 'Sekretaris MPO',
+            photo: 'https://ui-avatars.com/api/?name=Siti+Nurhaliza&size=400&background=0D8ABC&color=fff',
+            description: 'Administrasi dan tata kelola organisasi'
+          }
+        ]
+      },
+      {
+        id: '2',
+        title: 'Pengurus Harian',
+        order: 2,
+        members: [
+          {
+            id: '4',
+            name: 'Andi Wijaya, S.H.',
+            position: 'Ketua Umum',
+            photo: 'https://ui-avatars.com/api/?name=Andi+Wijaya&size=400&background=22C55E&color=fff',
+            description: 'Memimpin kepengurusan harian organisasi'
+          },
+          {
+            id: '5',
+            name: 'Dewi Lestari, S.Sos.',
+            position: 'Sekretaris Jenderal',
+            photo: 'https://ui-avatars.com/api/?name=Dewi+Lestari&size=400&background=22C55E&color=fff',
+            description: 'Koordinasi administrasi dan kesekretariatan'
+          },
+          {
+            id: '6',
+            name: 'Eko Prasetyo, S.E., M.M.',
+            position: 'Bendahara Umum',
+            photo: 'https://ui-avatars.com/api/?name=Eko+Prasetyo&size=400&background=22C55E&color=fff',
+            description: 'Pengelolaan keuangan organisasi'
+          },
+        ]
+      }
+    ]
+  },
   logo: {
     url: '',
     alt: 'SP Dapenbun Logo',
@@ -117,6 +199,7 @@ const defaultContent: SiteContent = {
     description: 'SP Dapenbun adalah organisasi serikat pekerja yang berkomitmen untuk memperjuangkan hak dan kesejahteraan anggota.',
     mission: 'Menjadi wadah perjuangan pekerja dalam mewujudkan kesejahteraan dan perlindungan hak-hak pekerja.',
     vision: 'Terwujudnya pekerja yang sejahtera, bermartabat, dan terlindungi hak-haknya.',
+    backgroundImage: 'https://picsum.photos/1920/1080?random=20',
   },
   services: {
     title: 'Program Kami',
@@ -194,7 +277,7 @@ export default function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [content, setContent] = useState<SiteContent>(defaultContent);
   const [reports, setReports] = useState<Report[]>([]);
-  const [currentView, setCurrentView] = useState<'home' | 'news'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'news' | 'board'>('home');
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
 
   // Load content from localStorage on mount
@@ -203,9 +286,10 @@ export default function App() {
     if (savedContent) {
       try {
         const parsed = JSON.parse(savedContent);
+        let needsUpdate = false;
 
         // Migration: convert old slide format to new format
-        if (parsed.hero.slides && parsed.hero.slides.length > 0) {
+        if (parsed.hero?.slides && parsed.hero.slides.length > 0) {
           const firstSlide = parsed.hero.slides[0];
 
           // Check if old format (single image string)
@@ -225,17 +309,77 @@ export default function App() {
                 alt: slide.alt || `Slide ${index + 1} Mobile`
               }
             }));
-            localStorage.setItem('siteContent', JSON.stringify(parsed));
+            needsUpdate = true;
           }
         }
 
-        // If no slides, use default
-        if (!parsed.hero.slides || parsed.hero.slides.length === 0) {
-          parsed.hero.slides = defaultContent.hero.slides;
-          localStorage.setItem('siteContent', JSON.stringify(parsed));
+        // Migration: Add backgroundImage to about if not exists
+        if (parsed.about && !parsed.about.backgroundImage) {
+          parsed.about.backgroundImage = defaultContent.about.backgroundImage;
+          needsUpdate = true;
         }
 
-        setContent(parsed);
+        // Check if any field was missing
+        if (parsed.board && !parsed.board.sections) {
+          const sections = [];
+
+          // Convert old MPO
+          if (parsed.board.mpo) {
+            sections.push({
+              id: '1',
+              title: parsed.board.mpo.title || 'Majelis Pertimbangan Organisasi (MPO)',
+              order: 1,
+              members: parsed.board.mpo.members || []
+            });
+          }
+
+          // Convert old dailyExecutive
+          if (parsed.board.dailyExecutive) {
+            sections.push({
+              id: '2',
+              title: parsed.board.dailyExecutive.title || 'Pengurus Harian',
+              order: 2,
+              members: parsed.board.dailyExecutive.members || []
+            });
+          }
+
+          parsed.board = {
+            title: parsed.board.title || defaultContent.board.title,
+            description: parsed.board.description || defaultContent.board.description,
+            sections: sections.length > 0 ? sections : defaultContent.board.sections
+          };
+
+          needsUpdate = true;
+        }
+
+        // Merge with default content for missing fields
+        const mergedContent: SiteContent = {
+          board: parsed.board?.sections ? parsed.board : defaultContent.board,
+          logo: parsed.logo || defaultContent.logo,
+          hero: {
+            ...defaultContent.hero,
+            ...parsed.hero,
+            slides: parsed.hero?.slides && parsed.hero.slides.length > 0
+              ? parsed.hero.slides
+              : defaultContent.hero.slides
+          },
+          about: {
+            ...defaultContent.about,
+            ...parsed.about,
+            backgroundImage: parsed.about?.backgroundImage || defaultContent.about.backgroundImage
+          },
+          services: parsed.services || defaultContent.services,
+          contact: parsed.contact || defaultContent.contact,
+          helpdesk: parsed.helpdesk || defaultContent.helpdesk,
+          news: parsed.news || defaultContent.news,
+        };
+
+        // Update localStorage if needed
+        if (needsUpdate) {
+          localStorage.setItem('siteContent', JSON.stringify(mergedContent));
+        }
+
+        setContent(mergedContent);
       } catch (error) {
         console.error('Error loading content:', error);
         setContent(defaultContent);
@@ -257,6 +401,11 @@ export default function App() {
       setIsAdmin(true);
     }
   }, []);
+
+  // Auto scroll to top when view changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentView, selectedArticle]);
 
   // Keyboard shortcut to open admin login (Ctrl+Shift+A)
   useEffect(() => {

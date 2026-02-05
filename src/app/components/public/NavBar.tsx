@@ -5,7 +5,7 @@ import { useState } from "react";
 interface NavbarProps {
     content: SiteContent
     onAdminAccess: () => void;
-    onViewChange: (view: 'home' | 'news') => void;
+    onViewChange: (view: 'home' | 'news' | 'board') => void;
 }
 
 export function NavBar({ content, onAdminAccess, onViewChange }: NavbarProps) {
@@ -45,7 +45,14 @@ export function NavBar({ content, onAdminAccess, onViewChange }: NavbarProps) {
                                 News
                             </button>
                             <a href="#helpdesk" className="text-foreground hover:text-primary transition-colors">Laporan</a>
+                            <button
+                                onClick={() => onViewChange('board')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Pengurus
+                            </button>
                             <a href="#contact" className="text-foreground hover:text-primary transition-colors">Kontak</a>
+
                             <button
                                 onClick={onAdminAccess}
                                 className="p-2 hover:bg-muted rounded-lg transition-colors"

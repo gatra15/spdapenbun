@@ -8,7 +8,7 @@ interface ContactSectionProps {
 export function ContactSection({ contact }: ContactSectionProps) {
     return (
         <>
-            < section id="contact" className="py-20 bg-white" >
+            < section id="contact" className="py-30 bg-white" >
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-4xl text-center mb-12 text-foreground">

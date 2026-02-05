@@ -13,13 +13,14 @@ import { ReportSection } from './public/ReportSection';
 import { Footer } from './public/Footer';
 import { NewsPage } from './NewsPage';
 import { NewsDetail } from './NewsDetail';
+import { BoardSection } from './BoardSection';
 
 interface PublicWebsiteProps {
     content: SiteContent;
     onAdminAccess: () => void;
     onSubmitReport: (report: Omit<Report, 'id' | 'date' | 'status'>) => void;
-    currentView: 'home' | 'news';
-    onViewChange: (view: 'home' | 'news') => void;
+    currentView: 'home' | 'news' | 'board';
+    onViewChange: (view: 'home' | 'news' | 'board') => void;
     selectedArticle: NewsArticle | null;
     onSelectArticle: (article: NewsArticle | null) => void;
 }
@@ -79,6 +80,20 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
         );
     }
 
+    if (currentView === 'board') {
+        return (
+            <div className='min-h-screen'>
+                <Toaster />
+
+                <NavBarPage content={content} onViewChange={onViewChange} />
+
+                <BoardSection content={content.board} />
+
+                <Footer onAdminAccess={onAdminAccess} />
+            </div>
+        )
+    }
+
     return (
         <div className="min-h-screen">
             <Toaster />
@@ -93,7 +108,7 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
             <HeroSlider content={content.hero} />
 
             {/* About Section */}
-            <AboutSection about={content.about} />
+            <AboutSection about={content.about} onViewChange={onViewChange} />
 
             {/* Services Section */}
             <ServiceSection services={content.services} />
@@ -103,6 +118,8 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
 
             {/* Report/Helpdesk Section */}
             <ReportSection helpdesk={content.helpdesk} handleSubmitReport={handleSubmitReport} />
+
+            {/* <BoardSection content={content.board} /> */}
 
             {/* Footer */}
             <Footer onAdminAccess={onAdminAccess} />

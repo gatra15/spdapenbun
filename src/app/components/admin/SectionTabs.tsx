@@ -1,4 +1,4 @@
-type SectionId = 'logo' | 'hero' | 'about' | 'services' | 'contact' | 'helpdesk' | 'reports';
+type SectionId = 'logo' | 'hero' | 'about' | 'services' | 'board' | 'contact' | 'helpdesk' | 'news' | 'reports';
 
 interface SectionTabsProps {
     activeSection: SectionId;
@@ -11,8 +11,10 @@ export function SectionTabs({ activeSection, onSectionChange }: SectionTabsProps
         { id: 'hero', label: 'Beranda' },
         { id: 'about', label: 'Tentang' },
         { id: 'services', label: 'Program' },
+        { id: 'board', label: 'Pengurus' },
         { id: 'contact', label: 'Kontak' },
         { id: 'helpdesk', label: 'Helpdesk' },
+        { id: 'news', label: 'Berita' },
         { id: 'reports', label: 'Laporan' },
     ] as const;
 

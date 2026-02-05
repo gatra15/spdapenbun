@@ -10,6 +10,8 @@ import { ServicesEditor } from './admin/ServicesEditor';
 import { ContactEditor } from './admin/ContactEditor';
 import { HelpdeskEditor } from './admin/HelpdeskEditor';
 import { ReportsManager } from './admin/ReportsManager';
+import { NewsEditor } from './admin/NewsEditor';
+import { BoardEditor } from './admin/BoardEditor';
 
 interface AdminPanelProps {
     content: SiteContent;
@@ -22,7 +24,7 @@ interface AdminPanelProps {
 
 export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportStatus, onDeleteReport }: AdminPanelProps) {
     const [editedContent, setEditedContent] = useState<SiteContent>(content);
-    const [activeSection, setActiveSection] = useState<'logo' | 'hero' | 'about' | 'services' | 'contact' | 'helpdesk' | 'reports'>('hero');
+    const [activeSection, setActiveSection] = useState<'logo' | 'hero' | 'about' | 'services' | 'board' | 'contact' | 'helpdesk' | 'news' | 'reports'>('hero');
 
     const handleSave = () => {
         onUpdate(editedContent);
@@ -144,12 +146,43 @@ export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportS
                             />
                         )}
 
+                        {activeSection === 'board' && (
+                            <BoardEditor
+                                board={editedContent.board}
+                                onUpdate={(board) => setEditedContent({ ...editedContent, board })}
+                            />
+                        )}
+
                         {activeSection === 'contact' && (
                             <ContactEditor content={editedContent.contact} onUpdate={updateContact} />
                         )}
 
                         {activeSection === 'helpdesk' && (
                             <HelpdeskEditor content={editedContent.helpdesk} onUpdate={updateHelpdesk} />
+                        )}
+
+                        {activeSection === 'news' && (
+                            <NewsEditor
+                                news={editedContent.news}
+                                onUpdateTitle={(value) =>
+                                    setEditedContent({
+                                        ...editedContent,
+                                        news: { ...editedContent.news, title: value },
+                                    })
+                                }
+                                onUpdateDescription={(value) =>
+                                    setEditedContent({
+                                        ...editedContent,
+                                        news: { ...editedContent.news, description: value },
+                                    })
+                                }
+                                onUpdateArticles={(articles) =>
+                                    setEditedContent({
+                                        ...editedContent,
+                                        news: { ...editedContent.news, articles },
+                                    })
+                                }
+                            />
                         )}
 
                         {activeSection === 'reports' && (
