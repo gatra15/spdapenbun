@@ -4,8 +4,8 @@ import { AdminPanel } from './app/components/AdminPanel';
 import { AdminLogin } from './app/components/AdminLogin';
 
 export interface BoardSection {
-  id: String;
-  title: String;
+  id: string;
+  title: string;
   members: BoardMember[];
   order: number;
 }

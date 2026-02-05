@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Edit, Trash2, Upload, Save, X, FolderPlus, GripVertical, ChevronUp, ChevronDown } from 'lucide-react';
+import { Plus, Edit, Trash2, Upload, Save, X, FolderPlus, ChevronUp, ChevronDown } from 'lucide-react';
 import { toast } from 'sonner';
 import type { BoardMember, SiteContent, BoardSection } from '../../../App';
 
