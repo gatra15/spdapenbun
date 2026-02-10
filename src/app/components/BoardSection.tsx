@@ -6,6 +6,19 @@ interface BoardSectionProps {
 }
 
 export function BoardSection({ content }: BoardSectionProps) {
+    const getGridClasses = (memberCount: number) => {
+        if (memberCount === 1) {
+            return 'grid-cols-1 max-w-md';
+        }
+        if (memberCount === 2) {
+            return 'grid-cols-1 sm:grid-cols-2 max-w-2xl';
+        }
+        if (memberCount === 3) {
+            return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl';
+        }
+        // 4 or more
+        return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    };
     return (
         <section id="board" className="py-20 bg-white">
             <div className="container mx-auto px-4">
@@ -37,7 +50,7 @@ export function BoardSection({ content }: BoardSectionProps) {
                                 <p>Belum ada anggota</p>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                            <div className={`grid gap-6 mx-auto ${getGridClasses(section.members.length)}`}>
                                 {section.members.map((member) => (
                                     <div
                                         key={member.id}

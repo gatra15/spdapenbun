@@ -129,18 +129,18 @@ export function AdminLogin({ onLogin, onClose }: AdminLoginProps) {
                 </form>
 
                 {/* Info */}
-                <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
+                {/* <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
                     <p className="text-xs text-muted-foreground text-center">
                         💡 <strong>Tip:</strong> Tekan <kbd className="px-2 py-1 bg-muted rounded text-xs">Ctrl</kbd> + <kbd className="px-2 py-1 bg-muted rounded text-xs">Shift</kbd> + <kbd className="px-2 py-1 bg-muted rounded text-xs">A</kbd> untuk membuka login admin
                     </p>
-                </div>
+                </div> */}
 
                 {/* Default credentials (hapus di production!) */}
-                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                {/* <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                     <p className="text-xs text-yellow-800 text-center">
                         <strong>Demo:</strong> Username: <code className="bg-yellow-100 px-1">admin</code> | Password: <code className="bg-yellow-100 px-1">admin123</code>
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
     );

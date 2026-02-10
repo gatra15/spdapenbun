@@ -101,7 +101,7 @@ export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportS
                                                 },
                                             })
                                         }
-                                        placeholder="https://example.com/logo.png"
+                                        placeholder="/images/logo.png"
                                         className="w-full px-4 py-3 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-primary"
                                     />
                                     <p className="text-sm text-muted-foreground mt-2">

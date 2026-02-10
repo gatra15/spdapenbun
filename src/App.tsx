@@ -114,24 +114,24 @@ const defaultContent: SiteContent = {
         members: [
           {
             id: '1',
-            name: 'Dr. Ahmad Suryanto, S.H., M.H.',
+            name: 'Evin Lasmana',
             position: 'Ketua MPO',
-            photo: 'https://ui-avatars.com/api/?name=Ahmad+Suryanto&size=400&background=0D8ABC&color=fff',
-            description: 'Berpengalaman 20 tahun di bidang ketenagakerjaan'
+            photo: '/images/WEB/PENGURUS/MPO/1.jpg',
+            description: ''
           },
           {
             id: '2',
-            name: 'Ir. Budi Santoso, M.M.',
+            name: 'Faizal Abidin',
             position: 'Wakil Ketua MPO',
-            photo: 'https://ui-avatars.com/api/?name=Budi+Santoso&size=400&background=0D8ABC&color=fff',
-            description: 'Ahli manajemen organisasi'
+            photo: '/images/WEB/PENGURUS/MPO/2.jpg',
+            description: ''
           },
           {
             id: '3',
-            name: 'Siti Nurhaliza, S.E.',
+            name: 'Purna Yudha Komara',
             position: 'Sekretaris MPO',
-            photo: 'https://ui-avatars.com/api/?name=Siti+Nurhaliza&size=400&background=0D8ABC&color=fff',
-            description: 'Administrasi dan tata kelola organisasi'
+            photo: '/images/WEB/PENGURUS/MPO/3.jpg',
+            description: ''
           }
         ]
       },
@@ -142,31 +142,185 @@ const defaultContent: SiteContent = {
         members: [
           {
             id: '4',
-            name: 'Andi Wijaya, S.H.',
+            name: 'Harry Nugroho',
             position: 'Ketua Umum',
-            photo: 'https://ui-avatars.com/api/?name=Andi+Wijaya&size=400&background=22C55E&color=fff',
-            description: 'Memimpin kepengurusan harian organisasi'
+            photo: '/images/WEB/PENGURUS/1.jpg',
+            description: ''
           },
           {
             id: '5',
-            name: 'Dewi Lestari, S.Sos.',
+            name: 'Ryan Abraham Silalahi',
             position: 'Sekretaris Jenderal',
-            photo: 'https://ui-avatars.com/api/?name=Dewi+Lestari&size=400&background=22C55E&color=fff',
-            description: 'Koordinasi administrasi dan kesekretariatan'
+            photo: '/images/WEB/PENGURUS/1.jpg',
+            description: ''
           },
           {
             id: '6',
-            name: 'Eko Prasetyo, S.E., M.M.',
+            name: 'Sanwani',
             position: 'Bendahara Umum',
-            photo: 'https://ui-avatars.com/api/?name=Eko+Prasetyo&size=400&background=22C55E&color=fff',
-            description: 'Pengelolaan keuangan organisasi'
+            photo: '/images/WEB/PENGURUS/3.jpg',
+            description: ''
           },
         ]
-      }
+      },
+      {
+        id: '3',
+        title: 'Department Kesejahteraan',
+        order: 3,
+        members: [
+          {
+            id: '7',
+            name: 'Tri Aji Sukarno',
+            position: 'Department Kesejahteraan',
+            photo: '/images/WEB/PENGURUS/4.jpg',
+            description: ''
+          },
+          {
+            id: '8',
+            name: 'Regita Syahkirana Putri',
+            position: 'Department Kesejahteraan',
+            photo: '/images/WEB/PENGURUS/5.jpg',
+            description: ''
+          },
+          {
+            id: '9',
+            name: 'Fasyara Rahma Abdilla',
+            position: 'Department Kesejahteraan',
+            photo: '/images/WEB/PENGURUS/6.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '4',
+        title: 'Departement Pemberdayaan Perempuan',
+        order: 4,
+        members: [
+          {
+            id: '10',
+            name: 'Nisaa Titaley',
+            position: 'Department Pemberdayaan Perempuan',
+            photo: '/images/WEB/PENGURUS/7.jpg',
+            description: ''
+          },
+          {
+            id: '11',
+            name: 'Disya Intan Fajriati',
+            position: 'Department Pemberdayaan Perempuan',
+            photo: '/images/WEB/PENGURUS/8.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '5',
+        title: 'Departement Hukum & Perlindungan Anggota',
+        order: 5,
+        members: [
+          {
+            id: '12',
+            name: 'Arief Wahyudi',
+            position: 'Department Hukum & Perlindungan Anggota',
+            photo: '/images/WEB/PENGURUS/9.jpg',
+            description: ''
+          },
+          {
+            id: '13',
+            name: 'Grace Sisca Silaban',
+            position: 'Department Hukum & Perlindungan Anggota',
+            photo: '/images/WEB/PENGURUS/10.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '6',
+        title: 'Departement Hubungan Kerja, Organisasi & Masyarakat',
+        order: 6,
+        members: [
+          {
+            id: '14',
+            name: 'Junaedi',
+            position: 'Department Hubungan Kerja, Organisasi & Masyarakat',
+            photo: '/images/WEB/PENGURUS/11.jpg',
+            description: ''
+          },
+          {
+            id: '15',
+            name: 'Hermawan',
+            position: 'Department Hubungan Kerja, Organisasi & Masyarakat',
+            photo: '/images/WEB/PENGURUS/12.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '7',
+        title: 'Departement Pendidikan & Pelatihan',
+        order: 7,
+        members: [
+          {
+            id: '16',
+            name: 'Galih Saputra',
+            position: 'Departement Pendidikan & Pelatihan',
+            photo: '/images/WEB/PENGURUS/13.jpg',
+            description: ''
+          },
+          {
+            id: '17',
+            name: 'Bernando Haybet Mahulae',
+            position: 'Departement Pendidikan & Pelatihan',
+            photo: '/images/WEB/PENGURUS/14.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '8',
+        title: 'Departement Sekretariat & Keanggotaan',
+        order: 8,
+        members: [
+          {
+            id: '18',
+            name: 'Akbar Ariananda',
+            position: 'Departement Sekretariat & Keanggotaan',
+            photo: '/images/WEB/PENGURUS/15.jpg',
+            description: ''
+          },
+          {
+            id: '19',
+            name: 'Muhammad Rezza Dermawan',
+            position: 'Departement Sekretariat & Keanggotaan',
+            photo: '/images/WEB/PENGURUS/16.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '8',
+        title: 'Departement Umum & Perlengkapan',
+        order: 8,
+        members: [
+          {
+            id: '18',
+            name: 'Muhammad Fahir',
+            position: 'Departement Umum & Perlengkapan',
+            photo: '/images/WEB/PENGURUS/17.jpg',
+            description: ''
+          },
+          {
+            id: '19',
+            name: 'Anggi Febrianto',
+            position: 'Departement Umum & Perlengkapan',
+            photo: '/images/WEB/PENGURUS/18.jpg',
+            description: ''
+          },
+        ]
+      },
     ]
   },
   logo: {
-    url: '',
+    url: '/images/logo.png',
     alt: 'SP Dapenbun Logo',
   },
   hero: {
@@ -176,21 +330,21 @@ const defaultContent: SiteContent = {
     slides: [
       {
         id: '1',
-        desktop: { image: 'https://picsum.photos/1920/1080?random=1', alt: 'Slide 1 Desktop' },
-        tablet: { image: 'https://picsum.photos/1024/768?random=1', alt: 'Slide 1 Tablet' },
-        mobile: { image: 'https://picsum.photos/768/1024?random=1', alt: 'Slide 1 Mobile' }
+        desktop: { image: '/images/WEB/01 BERANDA/1.jpg', alt: 'Slide 1 Desktop' },
+        tablet: { image: '/images/WEB/01 BERANDA/1.jpg', alt: 'Slide 1 Tablet' },
+        mobile: { image: '/images/WEB/01 BERANDA/1.jpg', alt: 'Slide 1 Mobile' }
       },
       {
         id: '2',
-        desktop: { image: 'https://picsum.photos/1920/1080?random=2', alt: 'Slide 2 Desktop' },
-        tablet: { image: 'https://picsum.photos/1024/768?random=2', alt: 'Slide 2 Tablet' },
-        mobile: { image: 'https://picsum.photos/768/1024?random=2', alt: 'Slide 2 Mobile' }
+        desktop: { image: '/images/WEB/01 BERANDA/2.jpg', alt: 'Slide 2 Desktop' },
+        tablet: { image: '/images/WEB/01 BERANDA/2.jpg', alt: 'Slide 2 Tablet' },
+        mobile: { image: '/images/WEB/01 BERANDA/2.jpg', alt: 'Slide 2 Mobile' }
       },
       {
         id: '3',
-        desktop: { image: 'https://picsum.photos/1920/1080?random=3', alt: 'Slide 3 Desktop' },
-        tablet: { image: 'https://picsum.photos/1024/768?random=3', alt: 'Slide 3 Tablet' },
-        mobile: { image: 'https://picsum.photos/768/1024?random=3', alt: 'Slide 3 Mobile' }
+        desktop: { image: '/images/WEB/01 BERANDA/3.jpg', alt: 'Slide 3 Desktop' },
+        tablet: { image: '/images/WEB/01 BERANDA/3.jpg', alt: 'Slide 3 Tablet' },
+        mobile: { image: '/images/WEB/01 BERANDA/3.jpg', alt: 'Slide 3 Mobile' }
       }
     ]
   },
@@ -199,7 +353,7 @@ const defaultContent: SiteContent = {
     description: 'SP Dapenbun adalah organisasi serikat pekerja yang berkomitmen untuk memperjuangkan hak dan kesejahteraan anggota.',
     mission: 'Menjadi wadah perjuangan pekerja dalam mewujudkan kesejahteraan dan perlindungan hak-hak pekerja.',
     vision: 'Terwujudnya pekerja yang sejahtera, bermartabat, dan terlindungi hak-haknya.',
-    backgroundImage: 'https://picsum.photos/1920/1080?random=20',
+    backgroundImage: '/images/WEB/02 TENTANG KAMI/a.jpg',
   },
   services: {
     title: 'Program Kami',
@@ -226,9 +380,9 @@ const defaultContent: SiteContent = {
   },
   contact: {
     title: 'Hubungi Kami',
-    address: 'Jl. Contoh No. 123, Jakarta Pusat, DKI Jakarta 10110',
-    phone: '+62 21 1234 5678',
-    email: 'info@spdapenbun.org',
+    address: 'Gedung Agro Plaza Lt. 10\nJalan HR.Rasuna Said Kav X2 No. 1\nJakarta Selatan 12950',
+    phone: '(021) 5793 8899',
+    email: 'spdpbun@gmail.com',
   },
   helpdesk: {
     title: 'Layanan Aspirasi & Laporan',
@@ -240,34 +394,14 @@ const defaultContent: SiteContent = {
     articles: [
       {
         id: '1',
-        title: 'Peningkatan Kesejahteraan Anggota Tahun 2024',
-        excerpt: 'SP Dapenbun berhasil menegosiasikan peningkatan tunjangan kesejahteraan untuk seluruh anggota sebesar 15% di tahun 2024.',
-        content: 'SP Dapenbun dengan bangga mengumumkan kesepakatan peningkatan kesejahteraan anggota sebesar 15% untuk tahun 2024. Kesepakatan ini merupakan hasil dari negosiasi intensif yang melibatkan manajemen dan perwakilan pekerja selama 3 bulan terakhir.\n\nPeningkatan ini mencakup berbagai aspek termasuk tunjangan kesehatan, pendidikan anak, dan dana pensiun. "Ini adalah pencapaian besar bagi seluruh anggota kami," ujar Ketua SP Dapenbun.\n\nProgram peningkatan kesejahteraan ini akan mulai efektif per 1 Januari 2024 dan akan berdampak langsung kepada lebih dari 5.000 anggota di seluruh Indonesia.',
-        image: 'https://picsum.photos/800/600?random=10',
+        title: 'PELANTIKAN PENGURUS SERIKAT PEKERJA DANA PENSIUN PERKEBUNAN',
+        excerpt: 'Telah dilaksanakan pelatikan pengurus baru Serikat Pekerja Dana Pensiun Perkebunan (SP DAPENBUN) pada Jumat, 9 Januari 2026.',
+        content: 'Telah dilaksanakan pelatikan pengurus baru Serikat Pekerja Dana Pensiun Perkebunan (SP DAPENBUN) pada Jumat, 9 Januari 2026. Acara ini dihadiri oleh pengurus Serikat Pekerja Perkebunan beserta Jajaran, Direksi Dana Pensiun Perkebunan serta seluruh anggota Serikat Pekerja Dana Pensiun Perkebunan.\n\nProsesi Penyerahan Pataka dilakukan oleh Ketua Umum Federasi Serikat Pekerja Perkebunan, Bapak Asmanuddin Sinaga, Kepada Ketua Umum terpilih Serikat Pekerja Dana Pensiun Perkebunan Periode 2026-2030 sebagai simbol amanah, legitimasi, dan keberlanjutan kepemimpinan organisasi.Momen sakral tersebut berlangsung khidmat dan penuh makna, disaksikan oleh Direksi Dana Pensiun Perkebunan serta Seluruh Anggota Serikat Pekerja Dana Pensiun Perkebunan yang menegaskan komitmen bersama untuk menjaga persatuan, memperkuat solidaritas, dan menggerakkan organisasi menuju masa depan yang lebih maju dan berdaya.\n\nDengan terlaksananya rangkaian pelantikan Pengurus Serikat Pekerja Dana Pensiun Perkebunan, kegiatan ini menjadi penanda awal kepengurusan baru dalam mengemban amanah organisasi.Diharapkan pengurus yang telah dilantik dapat menjalankan tugas dengan penuh tanggung jawab, menjaga solidaritas, serta memperkuat sinergi dengan Direksi demi terciptanya hubungan industrial yang harmonis dan berkelanjutan.Pelantikan ini sekaligus menegaskan komitmen bersama untuk menjadikan Serikat Pekerja sebagai Rumah Bersama dalam memperjuangkan aspirasi, kesejahteraan, dan kemajuan seluruh Anggota.',
+        image: '/images/WEB/03 NEWS/Pelantikan 09 Jan 2026.jpg',
         author: 'Admin SP Dapenbun',
         date: new Date().toISOString(),
-        category: 'Kesejahteraan'
+        category: 'Event'
       },
-      {
-        id: '2',
-        title: 'Workshop Pengembangan Kompetensi SDM',
-        excerpt: 'Ratusan anggota mengikuti workshop pengembangan kompetensi yang diselenggarakan SP Dapenbun bekerjasama dengan lembaga pelatihan nasional.',
-        content: 'SP Dapenbun menyelenggarakan workshop pengembangan kompetensi yang diikuti oleh 250 anggota dari berbagai wilayah. Workshop ini berlangsung selama 3 hari dengan materi yang mencakup kepemimpinan, manajemen keuangan, dan keterampilan digital.\n\nKegiatan ini merupakan bagian dari program tahunan SP Dapenbun untuk meningkatkan kapasitas anggota agar lebih siap menghadapi tantangan dunia kerja modern.\n\nPeserta mendapatkan sertifikat resmi yang dapat digunakan untuk pengembangan karir. "Workshop ini sangat bermanfaat untuk meningkatkan skill kami," kata salah satu peserta.',
-        image: 'https://picsum.photos/800/600?random=11',
-        author: 'Tim Humas',
-        date: new Date(Date.now() - 86400000 * 2).toISOString(),
-        category: 'Pelatihan'
-      },
-      {
-        id: '3',
-        title: 'Program Bantuan Pendidikan Anak Anggota',
-        excerpt: 'SP Dapenbun meluncurkan program beasiswa pendidikan untuk anak-anak anggota yang berprestasi.',
-        content: 'Dalam rangka mendukung pendidikan generasi penerus, SP Dapenbun meluncurkan program beasiswa pendidikan untuk anak-anak anggota yang berprestasi. Program ini akan memberikan bantuan biaya pendidikan dari tingkat SD hingga perguruan tinggi.\n\nTotal dana yang dialokasikan mencapai 2 miliar rupiah untuk tahun pertama, dengan target membantu minimal 100 siswa berprestasi.\n\nPendaftaran dibuka mulai bulan depan dengan persyaratan nilai rata-rata minimal 8.0 dan aktif dalam kegiatan ekstrakurikuler. "Pendidikan adalah investasi terbaik untuk masa depan," tutup Ketua SP Dapenbun.',
-        image: 'https://picsum.photos/800/600?random=12',
-        author: 'Admin SP Dapenbun',
-        date: new Date(Date.now() - 86400000 * 5).toISOString(),
-        category: 'Pendidikan'
-      }
     ]
   },
 };
