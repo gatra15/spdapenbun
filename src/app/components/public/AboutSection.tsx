@@ -43,7 +43,7 @@ export function AboutSection({ about, onViewChange }: AboutSectionProps) {
                 {/* <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-2xl">🎯</span>
                 </div> */}
-                <h3 className="text-2xl font-bold text-white mb-4">Visi</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 text-justify">Visi</h3>
                 <p className="text-white/90 leading-relaxed">
                   {about.vision}
                 </p>
@@ -55,7 +55,7 @@ export function AboutSection({ about, onViewChange }: AboutSectionProps) {
                   <span className="text-2xl">🚀</span>
                 </div> */}
                 <h3 className="text-2xl font-bold text-white mb-4">Misi</h3>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-white/90 leading-relaxed text-justify">
                   {about.mission}
                 </p>
               </div>

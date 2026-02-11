@@ -81,7 +81,7 @@ export function NewsPage({ news, onSelectArticle, onBack }: NewsPageProps) {
                                         </h3>
 
                                         {/* Excerpt */}
-                                        <p className="text-muted-foreground mb-4 line-clamp-3">
+                                        <p className="text-muted-foreground mb-4 line-clamp-3 text-justify">
                                             {article.excerpt}
                                         </p>
 

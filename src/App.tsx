@@ -435,8 +435,8 @@ const defaultContent: SiteContent = {
   about: {
     title: 'Tentang Kami',
     description: 'SP Dapenbun adalah organisasi serikat pekerja yang berkomitmen untuk memperjuangkan hak dan kesejahteraan anggota.',
-    mission: 'Menjadi wadah perjuangan pekerja dalam mewujudkan kesejahteraan dan perlindungan hak-hak pekerja.',
-    vision: 'Terwujudnya pekerja yang sejahtera, bermartabat, dan terlindungi hak-haknya.',
+    mission: 'Melanjutkan dan Meningkatkan Perjanjian kerja bersama (PKB) lebih baik; Menjaga keberlangsungan kesejahteraan karyawan; Memastikan karyawan tetap bekerja hingga masa pensiun; Menjaga hubungan industrial yang harmonis antara manajemen dengan serikat pekerja;	Aktif dan berkontribusi di tingkat federasi serikat pekerja perkebunan (FSPBUN)',
+    vision: 'Mendukung program perusahaan menuju industri berkelanjutan',
     backgroundImage: '/images/WEB/02 TENTANG KAMI/a.jpg',
   },
   services: {
@@ -444,20 +444,20 @@ const defaultContent: SiteContent = {
     items: [
       {
         id: '1',
-        title: 'Advokasi Hukum',
-        description: 'Memberikan bantuan dan pendampingan hukum kepada anggota dalam berbagai permasalahan ketenagakerjaan.',
-        icon: 'Shield',
-      },
-      {
-        id: '2',
-        title: 'Pelatihan & Pengembangan',
-        description: 'Menyelenggarakan program pelatihan untuk meningkatkan kompetensi dan keterampilan anggota.',
+        title: 'Helpdesk',
+        description: 'Menampung aspirasi melalui platform digital.',
         icon: 'Users',
       },
       {
+        id: '2',
+        title: 'Kesejahteraan Karyawan',
+        description: 'Implementasi PKB, Perencanaan karier dan Evaluasi Jaminan Kesehatan bersama SDM & Umum.',
+        icon: 'Shield',
+      },
+      {
         id: '3',
-        title: 'Dana Pensiun',
-        description: 'Mengelola dan mengawasi program dana pensiun untuk kesejahteraan anggota di masa depan.',
+        title: 'Sharing and Discuss',
+        description: 'Rapat berkala pengurus SP Pusat dan koordinator wilayah.',
         icon: 'Target',
       },
     ],

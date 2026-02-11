@@ -44,7 +44,7 @@ export function NewsDetail({ article, onBack }: NewsDetailProps) {
                     </div>
 
                     {/* Content */}
-                    <div className="p-8 md:p-12">
+                    <div className="p-8 md:p-12 text-justify">
                         {/* Meta Info */}
                         <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
                             <span className="flex items-center gap-1.5">
@@ -62,7 +62,7 @@ export function NewsDetail({ article, onBack }: NewsDetailProps) {
                         </div>
 
                         {/* Title */}
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+                        <h1 className="text-2xl md:text-4xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
                             {article.title}
                         </h1>
 
