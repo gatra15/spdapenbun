@@ -151,7 +151,7 @@ const defaultContent: SiteContent = {
             id: '5',
             name: 'Ryan Abraham Silalahi',
             position: 'Sekretaris Jenderal',
-            photo: '/images/WEB/PENGURUS/1.jpg',
+            photo: '/images/WEB/PENGURUS/2.jpg',
             description: ''
           },
           {
@@ -313,6 +313,90 @@ const defaultContent: SiteContent = {
             name: 'Anggi Febrianto',
             position: 'Departement Umum & Perlengkapan',
             photo: '/images/WEB/PENGURUS/18.jpg',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '9',
+        title: 'Wilayah I',
+        order: 9,
+        members: [
+          {
+            id: '20',
+            name: 'Hadmaji',
+            position: 'Koordinator Wilayah I',
+            photo: '',
+            description: 'https://ui-avatars.com/api/?name=Hadmaji&size=400&background=0D8ABC&color=fff'
+          },
+          {
+            id: '21',
+            name: 'Muhammad Endrano',
+            position: 'Sekretaris Wilayah I',
+            photo: '',
+            description: 'https://ui-avatars.com/api/?name=Muhammad+Endrano&size=400&background=0D8ABC&color=fff'
+          },
+          {
+            id: '22',
+            name: 'Berlian Tri Austin Sinaga',
+            position: 'Bendahara Wilayah I',
+            photo: 'https://ui-avatars.com/api/?name=Berlian+Tri+Austin+Sinaga&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '10',
+        title: 'Wilayah II',
+        order: 10,
+        members: [
+          {
+            id: '23',
+            name: 'M. Hadi Saputra',
+            position: 'Koordinator Wilayah II',
+            photo: 'https://ui-avatars.com/api/?name=M+Hadi+Saputra&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+          {
+            id: '24',
+            name: 'Ade Meilani',
+            position: 'Sekretaris Wilayah II',
+            photo: 'https://ui-avatars.com/api/?name=Ade+Meilani&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+          {
+            id: '25',
+            name: 'Rd. Hasti Setiawati',
+            position: 'Bendahara Wilayah II',
+            photo: 'https://ui-avatars.com/api/?name=Rd+Hasti+Setiawati&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+        ]
+      },
+      {
+        id: '11',
+        title: 'Wilayah III',
+        order: 11,
+        members: [
+          {
+            id: '26',
+            name: 'Harvianto Adi Wibowo',
+            position: 'Koordinator Wilayah III',
+            photo: 'https://ui-avatars.com/api/?name=Harvianto+Adi+Wibowo&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+          {
+            id: '27',
+            name: 'Risna Aditya Prahasta',
+            position: 'Sekretaris Wilayah III',
+            photo: 'https://ui-avatars.com/api/?name=Risna+Aditya+Prahasta&size=400&background=0D8ABC&color=fff',
+            description: ''
+          },
+          {
+            id: '28',
+            name: 'Rohman Darussalam',
+            position: 'Bendahara Wilayah III',
+            photo: 'https://ui-avatars.com/api/?name=Rohman+Darussalam&size=400&background=0D8ABC&color=fff',
             description: ''
           },
         ]
