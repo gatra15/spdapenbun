@@ -524,7 +524,6 @@ export default function App() {
   const [reports, setReports] = useState<Report[]>([]);
   const [currentView, setCurrentView] = useState<'home' | 'news' | 'board' | 'reference'>('home');
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
-  const [books, setBooks] = useState<Book[]>([]);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   // Load content from localStorage on mount
@@ -737,7 +736,7 @@ export default function App() {
             onViewChange={setCurrentView}
             selectedArticle={selectedArticle}
             onSelectArticle={setSelectedArticle}
-            books={books}
+            books={defaultContent.reference.books}
             selectedBook={selectedBook}
             onSelectBook={setSelectedBook}
           />

@@ -9,14 +9,14 @@ interface LibraryPageProps {
     onBack: () => void;
 }
 
-const categoryColors: Record<string, { bg: string; text: string }> = {
-    Regulasi: { bg: '#E6F1FB', text: '#185FA5' },
-    Teknis: { bg: '#E1F5EE', text: '#0F6E56' },
-    Panduan: { bg: '#FAEEDA', text: '#854F0B' },
-    Laporan: { bg: '#FAECE7', text: '#993C1D' },
-    Referensi: { bg: '#EEEDFE', text: '#3C3489' },
-    Lainnya: { bg: '#F1EFE8', text: '#444441' },
-};
+// const categoryColors: Record<string, { bg: string; text: string }> = {
+//     Regulasi: { bg: '#E6F1FB', text: '#185FA5' },
+//     Teknis: { bg: '#E1F5EE', text: '#0F6E56' },
+//     Panduan: { bg: '#FAEEDA', text: '#854F0B' },
+//     Laporan: { bg: '#FAECE7', text: '#993C1D' },
+//     Referensi: { bg: '#EEEDFE', text: '#3C3489' },
+//     Lainnya: { bg: '#F1EFE8', text: '#444441' },
+// };
 
 export function LibraryPage({ books, onSelectBook, onBack }: LibraryPageProps) {
     const [search, setSearch] = useState('');
@@ -109,7 +109,6 @@ export function LibraryPage({ books, onSelectBook, onBack }: LibraryPageProps) {
             <div className="max-w-5xl mx-auto px-4 py-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {filtered.map((book) => {
-                        const catColor = categoryColors[book.category] ?? categoryColors['Lainnya'];
                         return (
                             <div
                                 key={book.id}

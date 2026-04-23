@@ -276,7 +276,7 @@ export function NewsEditor({ news, onUpdateTitle, onUpdateDescription, onUpdateA
                         <div key={article.id} className="p-6 border border-border rounded-lg bg-white hover:shadow-md transition-shadow">
                             <div className="flex gap-4">
                                 {/* Thumbnail */}
-                                <div className="w-32 h-32 bg-muted rounded-lg overflow-hidden flex-shrink-0">
+                                <div className="w-32 h-32 bg-muted rounded-lg overflow-hidden">
                                     <img
                                         src={article.image}
                                         alt={article.title}
@@ -302,7 +302,7 @@ export function NewsEditor({ news, onUpdateTitle, onUpdateDescription, onUpdateA
                                         </div>
 
                                         {/* Actions */}
-                                        <div className="flex gap-2 flex-shrink-0">
+                                        <div className="flex gap-2">
                                             <button
                                                 onClick={() => setEditingArticle(article)}
                                                 className="p-2 bg-secondary/10 text-secondary rounded-lg hover:bg-secondary/20"

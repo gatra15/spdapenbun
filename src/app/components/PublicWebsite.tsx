@@ -31,7 +31,7 @@ interface PublicWebsiteProps {
     onSelectBook: (book: Book | null) => void;
 }
 
-export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentView, onViewChange, selectedArticle, onSelectArticle, books, selectedBook, onSelectBook }: PublicWebsiteProps) {
+export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentView, onViewChange, selectedArticle, onSelectArticle, selectedBook, onSelectBook }: PublicWebsiteProps) {
     const [lastSection, setLastSection] = useState('home');
     const [reportForm, setReportForm] = useState({
         name: '',

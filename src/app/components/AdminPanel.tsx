@@ -1,4 +1,4 @@
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useState } from 'react';
 import type { SiteContent, Report } from '../../App';
 import { toast } from 'sonner';
 import { Toaster } from '../components/ui/sonner';
@@ -13,7 +13,6 @@ import { ReportsManager } from './admin/ReportsManager';
 import { NewsEditor } from './admin/NewsEditor';
 import { BoardEditor } from './admin/BoardEditor';
 import { BookManager } from './admin/BookManager';
-import type { Book } from '../../types/library';
 
 interface AdminPanelProps {
     content: SiteContent;
