@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { PublicWebsite } from './app/components/PublicWebsite';
 import { AdminPanel } from './app/components/AdminPanel';
 import { AdminLogin } from './app/components/AdminLogin';
+import type { Book } from './types/library';
 
 export interface BoardSection {
   id: string;
@@ -99,6 +100,12 @@ export interface SiteContent {
     title: string;
     description: string;
     articles: NewsArticle[];
+  };
+
+  reference: {
+    title: string,
+    description: string,
+    books: Book[];
   };
 }
 
@@ -488,6 +495,26 @@ const defaultContent: SiteContent = {
       },
     ]
   },
+  reference: {
+    title: 'Referensi & Bacaan',
+    description: 'Berisi Kumpulan Buku dan Bacaan terkait Ketenagakerjaan',
+    books: [
+      {
+        id: '1',
+        title: "Buku PKB 2026–2027",
+        author: "Instansi PKB",
+        publisher: "Pemerintah",
+        year: 2026,
+        category: "Panduan",
+        description: "Panduan Pelaksanaan PKB Tahun 2026–2027.",
+        fileType: "pdf",
+        fileUrl: "/books/Buku_PKB_2026-2027.pdf",
+        tags: ["pkb", "panduan", "2026"],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      }
+    ]
+  }
 };
 
 export default function App() {
@@ -495,8 +522,10 @@ export default function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [content, setContent] = useState<SiteContent>(defaultContent);
   const [reports, setReports] = useState<Report[]>([]);
-  const [currentView, setCurrentView] = useState<'home' | 'news' | 'board'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'news' | 'board' | 'reference'>('home');
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
+  const [books, setBooks] = useState<Book[]>([]);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   // Load content from localStorage on mount
   useEffect(() => {
@@ -590,6 +619,7 @@ export default function App() {
           contact: parsed.contact || defaultContent.contact,
           helpdesk: parsed.helpdesk || defaultContent.helpdesk,
           news: parsed.news || defaultContent.news,
+          reference: parsed.reference || defaultContent.reference
         };
 
         // Update localStorage if needed
@@ -707,6 +737,9 @@ export default function App() {
             onViewChange={setCurrentView}
             selectedArticle={selectedArticle}
             onSelectArticle={setSelectedArticle}
+            books={books}
+            selectedBook={selectedBook}
+            onSelectBook={setSelectedBook}
           />
 
           {showLogin && (

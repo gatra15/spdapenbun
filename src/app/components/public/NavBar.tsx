@@ -5,10 +5,11 @@ import { useState } from "react";
 interface NavbarProps {
     content: SiteContent
     onAdminAccess: () => void;
-    onViewChange: (view: 'home' | 'news' | 'board') => void;
+    onViewChange: (view: 'home' | 'news' | 'board' | 'reference') => void;
+    onSectionChange: (section: string) => void;
 }
 
-export function NavBar({ content, onAdminAccess, onViewChange }: NavbarProps) {
+export function NavBar({ content, onAdminAccess, onViewChange, onSectionChange }: NavbarProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     return (
         <>
@@ -35,23 +36,58 @@ export function NavBar({ content, onAdminAccess, onViewChange }: NavbarProps) {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex items-center gap-8">
-                            <a href="#home" className="text-foreground hover:text-primary transition-colors">Beranda</a>
-                            <a href="#about" className="text-foreground hover:text-primary transition-colors">Tentang</a>
-                            <a href="#services" className="text-foreground hover:text-primary transition-colors">Program</a>
+                            <button
+                                onClick={() => onSectionChange('home')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Beranda
+                            </button>
+                            <button
+                                onClick={() => onSectionChange('about')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Tentang
+                            </button>
+                            <button
+                                onClick={() => onSectionChange('services')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Program
+                            </button>
+                            {/* <a href="#home" className="text-foreground hover:text-primary transition-colors">Beranda</a> */}
+                            {/* <a href="#about" className="text-foreground hover:text-primary transition-colors">Tentang</a> */}
+                            {/* <a href="#services" className="text-foreground hover:text-primary transition-colors">Program</a> */}
                             <button
                                 onClick={() => onViewChange('news')}
                                 className="text-foreground hover:text-primary transition-colors font-normal"
                             >
                                 News
                             </button>
-                            <a href="#helpdesk" className="text-foreground hover:text-primary transition-colors">Laporan</a>
+                            <button
+                                onClick={() => onViewChange('reference')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Referensi
+                            </button>
+                            <button
+                                onClick={() => onSectionChange('helpdesk')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Laporan
+                            </button>
                             <button
                                 onClick={() => onViewChange('board')}
                                 className="text-foreground hover:text-primary transition-colors font-normal"
                             >
                                 Pengurus
                             </button>
-                            <a href="#contact" className="text-foreground hover:text-primary transition-colors">Kontak</a>
+                            {/* <a href="#contact" className="text-foreground hover:text-primary transition-colors">Kontak</a> */}
+                            <button
+                                onClick={() => onSectionChange('contact')}
+                                className="text-foreground hover:text-primary transition-colors font-normal"
+                            >
+                                Kontak
+                            </button>
 
                             <button
                                 onClick={onAdminAccess}

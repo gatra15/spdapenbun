@@ -14,18 +14,25 @@ import { Footer } from './public/Footer';
 import { NewsPage } from './NewsPage';
 import { NewsDetail } from './NewsDetail';
 import { BoardSection } from './BoardSection';
+import { LibraryPage } from './public/LibraryPage';
+import type { Book } from '../../types/library';
+import { BookDetail } from './public/BookDetail';
 
 interface PublicWebsiteProps {
     content: SiteContent;
     onAdminAccess: () => void;
     onSubmitReport: (report: Omit<Report, 'id' | 'date' | 'status'>) => void;
-    currentView: 'home' | 'news' | 'board';
-    onViewChange: (view: 'home' | 'news' | 'board') => void;
+    currentView: 'home' | 'news' | 'board' | 'reference';
+    onViewChange: (view: 'home' | 'news' | 'board' | 'reference') => void;
     selectedArticle: NewsArticle | null;
     onSelectArticle: (article: NewsArticle | null) => void;
+    books: Book[],
+    selectedBook: Book | null,
+    onSelectBook: (book: Book | null) => void;
 }
 
-export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentView, onViewChange, selectedArticle, onSelectArticle }: PublicWebsiteProps) {
+export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentView, onViewChange, selectedArticle, onSelectArticle, books, selectedBook, onSelectBook }: PublicWebsiteProps) {
+    const [lastSection, setLastSection] = useState('home');
     const [reportForm, setReportForm] = useState({
         name: '',
         email: '',
@@ -33,6 +40,7 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
         subject: '',
         message: '',
     });
+
     const handleSubmitReport = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -52,6 +60,22 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
         toast.success('Laporan Anda telah berhasil dikirim!');
     };
 
+    const handleViewChange = (view: 'home' | 'news' | 'board' | 'reference') => {
+        // simpan section terakhir ke URL
+        window.location.hash = lastSection;
+
+        // reset detail
+        onSelectBook(null);
+        onSelectArticle(null);
+
+        onViewChange(view);
+    };
+
+    const handleSectionChange = (section: string) => {
+        setLastSection(section);
+        window.location.hash = section;
+    };
+
     if (selectedArticle) {
         return (
             <NewsDetail
@@ -67,7 +91,7 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
                 <Toaster />
 
                 {/* Navbar for News Page */}
-                <NavBarPage content={content} onViewChange={onViewChange} />
+                <NavBarPage content={content} onViewChange={handleViewChange} />
 
                 <NewsPage
                     news={content.news}
@@ -80,12 +104,31 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
         );
     }
 
+    if (selectedBook) {
+        return (
+            <BookDetail
+                book={selectedBook}
+                onBack={() => onSelectBook(null)}
+            />
+        );
+    }
+
+    if (currentView === 'reference') {
+        return (
+            <LibraryPage
+                books={content.reference.books}
+                onSelectBook={onSelectBook}
+                onBack={() => onViewChange('home')}
+            />
+        );
+    }
+
     if (currentView === 'board') {
         return (
             <div className='min-h-screen'>
                 <Toaster />
 
-                <NavBarPage content={content} onViewChange={onViewChange} />
+                <NavBarPage content={content} onViewChange={handleViewChange} />
 
                 <BoardSection content={content.board} />
 
@@ -94,6 +137,7 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
         )
     }
 
+
     return (
         <div className="min-h-screen">
             <Toaster />
@@ -101,14 +145,15 @@ export function PublicWebsite({ content, onAdminAccess, onSubmitReport, currentV
             <NavBar
                 content={content}
                 onAdminAccess={onAdminAccess}
-                onViewChange={onViewChange}
+                onViewChange={handleViewChange}
+                onSectionChange={handleSectionChange}
             />
 
             {/* Hero Section */}
             <HeroSlider content={content.hero} />
 
             {/* About Section */}
-            <AboutSection about={content.about} onViewChange={onViewChange} />
+            <AboutSection about={content.about} onViewChange={handleViewChange} />
 
             {/* Services Section */}
             <ServiceSection services={content.services} />

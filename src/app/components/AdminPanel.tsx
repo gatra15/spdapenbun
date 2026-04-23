@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 import type { SiteContent, Report } from '../../App';
 import { toast } from 'sonner';
 import { Toaster } from '../components/ui/sonner';
@@ -12,6 +12,8 @@ import { HelpdeskEditor } from './admin/HelpdeskEditor';
 import { ReportsManager } from './admin/ReportsManager';
 import { NewsEditor } from './admin/NewsEditor';
 import { BoardEditor } from './admin/BoardEditor';
+import { BookManager } from './admin/BookManager';
+import type { Book } from '../../types/library';
 
 interface AdminPanelProps {
     content: SiteContent;
@@ -24,7 +26,7 @@ interface AdminPanelProps {
 
 export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportStatus, onDeleteReport }: AdminPanelProps) {
     const [editedContent, setEditedContent] = useState<SiteContent>(content);
-    const [activeSection, setActiveSection] = useState<'logo' | 'hero' | 'about' | 'services' | 'board' | 'contact' | 'helpdesk' | 'news' | 'reports'>('hero');
+    const [activeSection, setActiveSection] = useState<'logo' | 'hero' | 'about' | 'services' | 'board' | 'contact' | 'helpdesk' | 'news' | 'reports' | 'reference'>('hero');
 
     const handleSave = () => {
         onUpdate(editedContent);
@@ -68,6 +70,16 @@ export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportS
         setEditedContent({
             ...editedContent,
             helpdesk: { ...editedContent.helpdesk, [field]: value },
+        });
+    };
+
+    const updateReference = (field: 'title' | 'description', value: string) => {
+        setEditedContent({
+            ...editedContent,
+            reference: {
+                ...editedContent.reference,
+                [field]: value,
+            },
         });
     };
 
@@ -151,6 +163,81 @@ export function AdminPanel({ content, onUpdate, onExit, reports, onUpdateReportS
                                 board={editedContent.board}
                                 onUpdate={(board) => setEditedContent({ ...editedContent, board })}
                             />
+                        )}
+
+                        {activeSection === 'reference' && (
+                            <div className="space-y-6">
+
+                                {/* Title */}
+                                <div>
+                                    <label className="block mb-2 text-foreground">Judul Section</label>
+                                    <input
+                                        value={editedContent.reference.title}
+                                        onChange={(e) => updateReference('title', e.target.value)}
+                                        className="w-full px-4 py-3 border border-border rounded-lg"
+                                    />
+                                </div>
+
+                                {/* Description */}
+                                <div>
+                                    <label className="block mb-2 text-foreground">Deskripsi</label>
+                                    <textarea
+                                        value={editedContent.reference.description}
+                                        onChange={(e) => updateReference('description', e.target.value)}
+                                        className="w-full px-4 py-3 border border-border rounded-lg"
+                                    />
+                                </div>
+
+                                {/* Book Manager */}
+                                <BookManager
+                                    books={editedContent.reference.books}
+
+                                    onAdd={(book) => {
+                                        const newBook = {
+                                            ...book,
+                                            id: crypto.randomUUID(),
+                                            createdAt: new Date().toISOString(),
+                                            updatedAt: new Date().toISOString(),
+                                        };
+
+                                        setEditedContent({
+                                            ...editedContent,
+                                            reference: {
+                                                ...editedContent.reference,
+                                                books: [...editedContent.reference.books, newBook],
+                                            },
+                                        });
+                                    }}
+
+                                    onUpdate={(id, updated) => {
+                                        setEditedContent({
+                                            ...editedContent,
+                                            reference: {
+                                                ...editedContent.reference,
+                                                books: editedContent.reference.books.map(b =>
+                                                    b.id === id
+                                                        ? { ...b, ...updated, updatedAt: new Date().toISOString() }
+                                                        : b
+                                                ),
+                                            },
+                                        });
+                                    }}
+
+                                    onDelete={(id) => {
+                                        setEditedContent({
+                                            ...editedContent,
+                                            reference: {
+                                                ...editedContent.reference,
+                                                books: editedContent.reference.books.filter(b => b.id !== id),
+                                            },
+                                        });
+                                    }}
+
+                                    onSelectBook={(book) => {
+                                        console.log(book);
+                                    }}
+                                />
+                            </div>
                         )}
 
                         {activeSection === 'contact' && (
