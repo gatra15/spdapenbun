@@ -508,7 +508,7 @@ const defaultContent: SiteContent = {
         category: "Panduan",
         description: "Panduan Pelaksanaan PKB Tahun 2026–2027.",
         fileType: "pdf",
-        fileUrl: "/books/Buku_PKB_2026-2027.pdf",
+        fileUrl: "",
         tags: ["pkb", "panduan", "2026"],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
